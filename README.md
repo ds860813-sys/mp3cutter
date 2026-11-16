@@ -101,10 +101,13 @@ by Git.
 ## Third-party software
 
 BASS, BASSmix, and BASSWASAPI are products of Un4seen Developments. They are
-not distributed by this repository. Review the Un4seen license terms before
-redistributing the DLLs with a built application.
+not distributed by this repository and are not covered by this project's MIT
+license. Review the current [Un4seen BASS licensing terms](https://www.un4seen.com/bass.html#license)
+before distributing a built application. See
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for details.
 
 ## License
 
-No source license has been selected yet. Add a `LICENSE` file before presenting
-the code as reusable open-source software.
+Copyright (c) 2026 Дмитрий (ds860813-sys).
+
+Mp3cutter is available under the [MIT License](LICENSE).
