@@ -8,17 +8,15 @@ without re-encoding. Most of the code is in `main.cpp` (about 3,500 lines).
 
 ## Working with the code
 
-When more context is needed, search for the relevant symbol and inspect its
-surrounding code:
+Use `rg` to locate a symbol, then inspect its surrounding implementation:
 
 ```powershell
 rg -n "FunctionName|g_variable" main.cpp
 rg -n -C 25 "FunctionName" main.cpp
 ```
 
-Relevant context commonly spans 50-250 lines. Generated artifacts and SDK
-sources may also be inspected when useful. Consult `README.md`,
-`CMakeLists.txt`, and scripts when changing the build or tests.
+Consult `README.md`, `CMakeLists.txt`, and scripts when changing the build or
+tests.
 
 Search map (line numbers may change):
 
@@ -35,7 +33,8 @@ Search map (line numbers may change):
 
 - Export copies complete MP3 frames without decoding, re-encoding, or changing
   the volume.
-- `A-B`, the cursor, zoom, and `g_viewStart` use the `0.0..1.0` range.
+- A-B positions, the cursor, `g_viewStart`, and the visible view span use the
+  `0.0..1.0` range. `g_zoom` is `1.0..100.0`, and `ViewSpan()` is `1 / g_zoom`.
 - Waveform generation and export run on background threads. UI updates are
   posted to the window thread through `PostMessageW`, and worker threads are
   cancelled and joined on shutdown.
