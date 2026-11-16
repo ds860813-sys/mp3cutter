@@ -8,6 +8,9 @@
 /tests/*.dll
 /tests/*.manifest
 
+# Local third-party SDK
+/Bass/
+
 # Local application state
 /settings.txt
 

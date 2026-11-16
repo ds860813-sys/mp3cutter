@@ -6,7 +6,8 @@ Mp3cutter uses the following audio libraries from Un4seen Developments:
 - BASSmix
 - BASSWASAPI
 
-These libraries and their SDK files are not included in this repository. They
+These libraries and their SDK files are kept in the local `Bass\` directory,
+which is excluded from Git and is not distributed with this repository. They
 remain subject to Un4seen's terms and are not covered by this project's MIT
 license.
 

@@ -29,15 +29,29 @@
 - CMake 3.24 or newer only when using the CMake build.
 
 Download the audio SDKs from [un4seen.com](https://www.un4seen.com/). The BASS
-binaries are not included in this repository, so each user can obtain them
-under the applicable license.
+SDK is kept in the local `Bass\` directory and is excluded from Git, so each
+user can obtain it separately under the applicable license.
 
-By default, the project expects this directory layout:
+The default SDK layout inside the project is:
 
 ```text
-parent-directory/
-|-- bass24/
-`-- ExportProject/
+ExportProject/
+`-- Bass/
+    |-- bass24/
+    |   |-- c/
+    |   |   |-- bass.h
+    |   |   `-- x64/bass.lib
+    |   `-- x64/bass.dll
+    |-- bassmix24/
+    |   |-- c/
+    |   |   |-- bassmix.h
+    |   |   `-- x64/bassmix.lib
+    |   `-- x64/bassmix.dll
+    `-- basswasapi24/
+        |-- c/
+        |   |-- basswasapi.h
+        |   `-- x64/basswasapi.lib
+        `-- x64/basswasapi.dll
 ```
 
 ## Build
@@ -48,19 +62,19 @@ Open a terminal in the project directory and run:
 build.bat
 ```
 
-To use an SDK in another location:
+To use a different SDK location:
 
 ```bat
-set BASS_SDK=C:\path\to\bass24
+set BASS_DIR=C:\path\to\Bass
 build.bat
 ```
 
-The executable and the required BASS DLLs are written to `bin\`.
+The executable and the three required BASS DLLs are written to `bin\`.
 
 The project can also be built with CMake:
 
 ```bat
-cmake -S . -B build -DBASS_SDK=C:\path\to\bass24
+cmake -S . -B build -DBASS_DIR=C:\path\to\Bass
 cmake --build build --config Release
 ```
 
@@ -95,14 +109,15 @@ tests\build_smoke.bat
 tests\core_smoke.exe "C:\Music\track.mp3" "%TEMP%\range.mp3" 0.15 0.35
 ```
 
-Build output, test media, exported files, and local editor settings are ignored
-by Git.
+Build output, the local `Bass\` SDK, test media, exported files, and local
+editor settings are ignored by Git.
 
 ## Third-party software
 
-BASS, BASSmix, and BASSWASAPI are products of Un4seen Developments. They are
-not distributed by this repository and are not covered by this project's MIT
-license. Review the current [Un4seen BASS licensing terms](https://www.un4seen.com/bass.html#license)
+BASS, BASSmix, and BASSWASAPI are products of Un4seen Developments. The local
+`Bass\` directory is not distributed with this repository and is not covered by
+this project's MIT license. Review the current
+[Un4seen BASS licensing terms](https://www.un4seen.com/bass.html#license)
 before distributing a built application. See
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for details.
 

@@ -51,9 +51,9 @@ cmd /c build.bat Release
 ```
 
 The output is `bin\Mp3cutter.exe`, and the BASS DLLs are copied there as well.
-The SDK is located in `..\bass24` by default. Build outputs are generated in
-`bin/` and `obj/`. The icon is included through `app.rc` and `resource.h`; the
-source asset `assets\Mp3cutter.ico` is rebuilt by
+The SDK is located in `Bass\` by default and must not be deleted. Build outputs
+are generated in `bin/` and `obj/`. The icon is included through `app.rc` and
+`resource.h`; the source asset `assets\Mp3cutter.ico` is rebuilt by
 `tools\generate-app-icon.ps1`.
 
 For the parser, waveform, and export:
