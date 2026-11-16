@@ -18,6 +18,10 @@ Mp3cutter is a small Windows desktop program for selecting an A-B range in an
 MP3 file and exporting that range quickly. Export copies the original MP3
 frames without decoding or re-encoding the audio.
 
+> **Important:** `Mp3cutter.exe` does not include the BASS libraries. It cannot
+> start until `bass.dll`, `bassmix.dll`, and `basswasapi.dll` are placed next to
+> the executable.
+
 ## Download and run
 
 The repository provides a 64-bit Windows executable:
@@ -60,6 +64,14 @@ BASS has its own license and is not covered by this project's MIT license. See
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and the official
 [Un4seen licensing terms](https://www.un4seen.com/bass.html#license).
 
+### If the executable does not start
+
+- Confirm that Windows 10 or 11 x64 is being used.
+- Confirm that all three DLLs are in the same folder as `Mp3cutter.exe`.
+- Confirm that the files are named exactly `bass.dll`, `bassmix.dll`, and
+  `basswasapi.dll`.
+- Confirm that the x64 DLLs were extracted, not the x86 versions.
+
 ## Using the program
 
 1. Click `Open MP3`, or pass a file path when starting the program.
@@ -80,19 +92,32 @@ additional compression, volume adjustment, or audio effect is applied.
 
 ## Build from source
 
+### Get the source
+
+Clone the repository:
+
+```powershell
+git clone https://github.com/ds860813-sys/mp3cutter.git
+cd mp3cutter
+```
+
+You can also download and extract the repository ZIP from GitHub, then open a
+terminal in the extracted project directory.
+
 ### Requirements
 
 - Windows 10 or 11, x64.
 - Visual Studio 2022 or newer with the x64 C++ build tools and Windows SDK.
 - 64-bit BASS 2.4, BASSmix 2.4, and BASSWASAPI 2.4 SDKs.
 - CMake 3.24 or newer only when using the CMake build.
+- Git is needed to clone the source; it is not needed for a downloaded ZIP.
 
 Download `bass24.zip`, `bassmix24.zip`, and `basswasapi24.zip` from
 [un4seen.com](https://www.un4seen.com/). Extract them inside the project using
 the following layout:
 
 ```text
-ExportProject/
+mp3cutter/
 `-- Bass/
     |-- bass24/
     |   |-- c/
@@ -173,6 +198,23 @@ this project's MIT license. Review the current
 [Un4seen BASS licensing terms](https://www.un4seen.com/bass.html#license)
 before distributing a built application. See
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for details.
+
+## Responsibility and legal notice
+
+Mp3cutter's original source code and executable are provided under the MIT
+license on an "as is" basis, without warranties, to the extent permitted by
+applicable law. The complete warranty and liability terms are in
+[LICENSE](LICENSE).
+
+This repository does not grant any rights to BASS, BASSmix, BASSWASAPI, or
+music files. Users obtain the BASS libraries directly from Un4seen and decide
+whether their use or redistribution complies with the applicable Un4seen
+license. Users are also responsible for ensuring that they have the right to
+play, edit, and export any audio file.
+
+Mp3cutter is not affiliated with or endorsed by Un4seen Developments. This
+notice is a project description, not legal advice, and it does not override
+mandatory law or any license that applies to third-party software.
 
 ## License
 
