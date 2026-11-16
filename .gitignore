@@ -1,0 +1,39 @@
+# Build output
+/bin/
+/obj/
+/build/
+/out/
+/tests/*.exe
+/tests/*.obj
+/tests/*.dll
+/tests/*.manifest
+
+# Local application state
+/settings.txt
+
+# Visual Studio and editor state
+/.vs/
+/.vscode/
+*.user
+*.suo
+*.VC.db
+*.VC.VC.opendb
+
+# CMake output
+/CMakeFiles/
+/CMakeCache.txt
+/cmake_install.cmake
+/Makefile
+/*.sln
+/*.vcxproj
+/*.vcxproj.filters
+
+# Test media and local exports
+*.mp3
+
+# Temporary files
+*.tmp
+*.log
+Thumbs.db
+Desktop.ini
+.DS_Store
