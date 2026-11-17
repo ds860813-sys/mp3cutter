@@ -3045,7 +3045,18 @@ bool SeekActivePlayback(double fraction) {
             FinishPlaybackNaturally();
             return true;
         }
-    } else if (fraction >= 1.0) {
+        // An A-B audition runs as a mixer source that carries a volume
+        // envelope and a length limit expressed in mixer bytes relative to
+        // the moment it was added. Seeking such a source in place leaves the
+        // envelope out of sync with the new position, so its fade-out no
+        // longer lands on B and the silent kTailGuardMs tail becomes
+        // audible. Restarting the audition at the new position rebuilds the
+        // envelope and the length limit from the A-B markers, which keeps
+        // the ending identical to a freshly started A-B playback.
+        return StartPlaybackAt(AuditionKind::MarkerRange, fraction,
+                               g_playReturnPoint);
+    }
+    if (fraction >= 1.0) {
         FinishPlaybackNaturally();
         return true;
     }
